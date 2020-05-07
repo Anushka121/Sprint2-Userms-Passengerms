@@ -60,7 +60,7 @@ public class UserRestController {
 	 * @return
 	 */
 	@PostMapping("/add")
-	ResponseEntity<UserDetailsDto> addPassenger(@Valid @RequestBody CreateUserRequestDto reqDto) {
+	ResponseEntity<UserDetailsDto> addUser(@Valid @RequestBody CreateUserRequestDto reqDto) {
 		User user = new User();
 		user.setUserId(reqDto.getUserId());
 		user.setUserType(reqDto.getUserType());
