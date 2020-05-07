@@ -50,7 +50,7 @@ public class PassengerRestController {
 	private IPassengerService passengerService;
 
 	@Value("${BookingServiceUrl}")
-	private String BookingBaseUrl;
+	private String bookingBaseUrl;
 	
 	
 	
