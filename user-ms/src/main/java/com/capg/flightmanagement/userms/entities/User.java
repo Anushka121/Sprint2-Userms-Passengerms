@@ -1,7 +1,10 @@
 package com.capg.flightmanagement.userms.entities;
 
 import java.math.BigInteger;
+
+import javax.annotation.Generated;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -9,7 +12,9 @@ import javax.persistence.Table;
 @Table(name = "users")
 public class User {
 	@Id
+	@GeneratedValue
 	private BigInteger userId;
+	
 	private String userType;
 	private String userName;
 	private String userPassword;

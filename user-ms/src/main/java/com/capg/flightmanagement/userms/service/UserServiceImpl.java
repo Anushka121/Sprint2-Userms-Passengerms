@@ -92,15 +92,7 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public User modifyUser(User user) {
-		BigInteger userId = user.getUserId();
-		Optional<User> optional = dao.findById(userId);
-		if (optional.isPresent()) {
-			User user1 = optional.get();
-			user1 = dao.save(user);
-			return user1;
-		}
-		throw new UserNotFoundException("No User to  modified" + userId);
-
+		return dao.save(user);
 	}
 
 }

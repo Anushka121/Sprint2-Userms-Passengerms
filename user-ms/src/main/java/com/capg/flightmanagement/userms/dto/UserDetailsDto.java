@@ -11,6 +11,14 @@ import java.math.BigInteger;
  */
 public class UserDetailsDto {
 	private BigInteger userId;
+	public BigInteger getUserId() {
+		return userId;
+	}
+
+	public void setUserId(BigInteger userId) {
+		this.userId = userId;
+	}
+
 	private String userType;
 	
 	private String userName;
@@ -26,14 +34,7 @@ public class UserDetailsDto {
 		this.userType = userType;
 	}
 
-	public BigInteger getUserId() {
-		return userId;
-	}
-
-	public void setUserId(BigInteger userId) {
-		this.userId = userId;
-	}
-
+	
 	public String getUserName() {
 		return userName;
 	}

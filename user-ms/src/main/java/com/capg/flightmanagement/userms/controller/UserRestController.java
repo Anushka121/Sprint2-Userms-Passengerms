@@ -62,7 +62,6 @@ public class UserRestController {
 	@PostMapping("/add")
 	ResponseEntity<UserDetailsDto> addUser(@Valid @RequestBody CreateUserRequestDto reqDto) {
 		User user = new User();
-		user.setUserId(reqDto.getUserId());
 		user.setUserType(reqDto.getUserType());
 		user.setUserName(reqDto.getUserName());
 		user.setUserPassword(reqDto.getUserPassword());
@@ -122,7 +121,7 @@ public class UserRestController {
 		user.setUserPassword(dto.getUserPassword());
 		user.setUserPhone(dto.getUserPhone());
 		user.setEmail(dto.getEmail());
-
+        user=userService.modifyUser(user);
 		UserDetailsDto userDetails = convertToDetailsDto(user);
 		ResponseEntity<UserDetailsDto> response = new ResponseEntity<>(userDetails, HttpStatus.OK);
 		return response;
@@ -140,8 +139,8 @@ public class UserRestController {
 
 	public UserDetailsDto convertToDetailsDto(User user) {
 		UserDetailsDto dto = new UserDetailsDto();
-		dto.setUserType(user.getUserType());
 		dto.setUserId(user.getUserId());
+		dto.setUserType(user.getUserType());
 		dto.setUserName(user.getUserName());
 		dto.setUserPassword(user.getUserPassword());
 		dto.setUserPhone(user.getUserPhone());

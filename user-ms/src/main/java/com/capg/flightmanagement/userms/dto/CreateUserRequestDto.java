@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
  *
  */
 public class CreateUserRequestDto {
-	private BigInteger userId;
+	//private BigInteger userId;
 	private String userType;
 
 	private String userName;
@@ -26,13 +26,6 @@ public class CreateUserRequestDto {
 		this.userType = userType;
 	}
 
-	public BigInteger getUserId() {
-		return userId;
-	}
-
-	public void setUserId(BigInteger userId) {
-		this.userId = userId;
-	}
 
 	public String getUserName() {
 		return userName;

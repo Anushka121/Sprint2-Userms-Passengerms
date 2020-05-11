@@ -47,10 +47,7 @@ public class UserValidation {
         {
             throw new IncorrectArgumentException("UserType  not provided");
         }
-        if(user.getUserId()==null)
-        {
-            throw new IncorrectArgumentException("UserId  not provided");
-        }
+        
         if(user.getUserName()==null||user.getUserName().isEmpty())
         {
             throw new IncorrectArgumentException("UserName not provided");
