@@ -12,6 +12,8 @@ import com.capg.flightmanagement.passengerms.entities.Passenger;
 import com.capg.flightmanagement.passengerms.exceptions.InvalidArgumentException;
 import com.capg.flightmanagement.passengerms.exceptions.PassengerNotFoundException;
 import com.capg.flightmanagement.passengerms.service.IPassengerService;
+import com.capg.flightmanagement.passengerms.util.PassengerValidation;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +40,8 @@ public class PassengerRestController {
 	@Autowired
 	private IPassengerService passengerService;
 
-	@Value("${BookingServiceUrl}")
-	private String BookingBaseUrl;
+	@Value("${bookingServiceUrl}")
+	private String bookingBaseUrl;
 
 	/***
 	 * 
@@ -53,73 +55,79 @@ public class PassengerRestController {
 		return response;
 	}
 
-	public List<PassengerDto> convertToDto(List<Passenger> passengerList)
-	{
-		List<PassengerDto> dto=new ArrayList<>();
-		for(Passenger passenger:passengerList)
-		{
-			PassengerDto dtos=convertToPassengerDto(passenger);
+	
+
+	public List<PassengerDto> convertToDto(List<Passenger> passengerList) {
+		List<PassengerDto> dto = new ArrayList<>();
+		for (Passenger passenger : passengerList) {
+			PassengerDto dtos = convertToPassengerDto(passenger);
 			dto.add(dtos);
 		}
 		return dto;
 	}
-	
-	
-	public PassengerDto convertToPassengerDto(Passenger passenger)
-	{ PassengerDto passengerDto=new PassengerDto();
-	passengerDto.setUin(passenger.getUin());
-	passengerDto.setPnr(passenger.getPnr());
-	passengerDto.setPassengerName(passenger.getPassengerName());
-	passengerDto.setPassengerAge(passenger.getPassengerAge());
-	passengerDto.setLuggage(passenger.getLuggage());
-	passengerDto.setGender(passenger.getGender());
-	return passengerDto;
-		
+
+	public PassengerDto convertToPassengerDto(Passenger passenger) {
+		PassengerDto passengerDto = new PassengerDto();
+		passengerDto.setUin(passenger.getUin());
+		passengerDto.setPnr(passenger.getPnr());
+		passengerDto.setPassengerName(passenger.getPassengerName());
+		passengerDto.setPassengerAge(passenger.getPassengerAge());
+		passengerDto.setLuggage(passenger.getLuggage());
+		passengerDto.setGender(passenger.getGender());
+		return passengerDto;
+
 	}
-	
+
 	/***
 	 * for adding the details
 	 * 
-	 * @param reqDto
-	 * @return
+	 * @param passengerDto
+	 * @return whether added or not
 	 */
-
-	ResponseEntity<Boolean> storePassengersDetails(@RequestBody List<PassengerDto> passengerDto) {
+	@PostMapping("/add")
+	ResponseEntity<List<PassengerDto>> storePassengersDetails(@Valid @RequestBody PassengerDto[] passengerDto) {
+		List<PassengerDto> passengerList=new ArrayList<>();
 		for (PassengerDto passengerDetails : passengerDto) {
-			Passenger passenger = new Passenger();
-			passenger.setUin(passengerDetails.getUin());
-			passenger.setPassengerAge(passengerDetails.getPassengerAge());
-			passenger.setPassengerName(passengerDetails.getPassengerName());
-			passenger.setPnr(passengerDetails.getPnr());
-			passenger.setGender(passengerDetails.getGender());
-
-			passenger = passengerService.addPassenger(passenger);
+			Passenger passenger=convertFromDtoToPassenger(passengerDetails);
+			passenger=passengerService.addPassenger(passenger);
+			PassengerDto dto=convertToPassengerDto(passenger);
+			passengerList.add(dto);
 		}
-		ResponseEntity<Boolean> response = new ResponseEntity<>(true, HttpStatus.OK);
+		ResponseEntity<List<PassengerDto>> response = new ResponseEntity<>(passengerList, HttpStatus.OK);
 		return response;
 	}
-
+	public Passenger convertFromDtoToPassenger(PassengerDto dto)
+	{
+		Passenger passenger = new Passenger();
+		PassengerValidation.validateUin(dto.getUin());
+		passenger.setUin(dto.getUin());
+		passenger.setPnr(dto.getPnr());
+		passenger.setPassengerName(dto.getPassengerName());
+		passenger.setPassengerAge(dto.getPassengerAge());
+		passenger.setLuggage(dto.getLuggage());
+		passenger.setGender(dto.getGender());
+		return passenger;
+	}
 	/**
 	 * deletes the passenger details
 	 * 
-	 * @param uin
+	 * @param passengerDto 
 	 * @return whether the passenger data is deleted
 	 */
-	@DeleteMapping("/delete/{uin}")
-	ResponseEntity<Boolean> deletePassenger(@PathVariable("uin") BigInteger uin) {
-		boolean result = passengerService.deletePassenger(uin);
-		ResponseEntity<Boolean> response = new ResponseEntity<>(result, HttpStatus.OK);
-		return response;
+	
 
-	}
+	@DeleteMapping("/delete")
+	ResponseEntity<Boolean> removePassengers( @RequestBody PassengerDto[] passengerDto) {
 
-	@DeleteMapping("/remove")
-	ResponseEntity<Boolean> removePassengers(@RequestBody List<BigInteger> passengersUIN) {
-
-		for (BigInteger passengerUIN : passengersUIN) {
-			passengerService.deletePassenger(passengerUIN);
+		  boolean message=false;
+			for (PassengerDto passengerDetails : passengerDto) {
+		
+			Passenger passenger=convertFromDtoToPassenger(passengerDetails);
+			BigInteger passengerUin=passenger.getUin();
+			
+			message=passengerService.deletePassenger(passengerUin);
 		}
-		ResponseEntity<Boolean> response = new ResponseEntity<>(true, HttpStatus.OK);
+		ResponseEntity<Boolean> response = new ResponseEntity<>(message, HttpStatus.OK);
 		return response;
 	}
 
@@ -132,7 +140,7 @@ public class PassengerRestController {
 	@GetMapping("/get/{uin}")
 	ResponseEntity<PassengerDto> getById(@PathVariable("uin") BigInteger uin) {
 		Passenger passenger = passengerService.findPassengerByUin(uin);
-		PassengerDto dto=convertToPassengerDto(passenger);
+		PassengerDto dto = convertToPassengerDto(passenger);
 		ResponseEntity<PassengerDto> response = new ResponseEntity<>(dto, HttpStatus.OK);
 		return response;
 

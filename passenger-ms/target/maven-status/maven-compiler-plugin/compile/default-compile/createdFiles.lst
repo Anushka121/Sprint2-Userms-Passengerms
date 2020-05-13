@@ -1,12 +1,9 @@
 com\capg\flightmanagement\passengerms\controller\PassengerRestController.class
 com\capg\flightmanagement\passengerms\dao\IPassengerDao.class
 com\capg\flightmanagement\passengerms\service\IPassengerService.class
-com\capg\flightmanagement\passengerms\util\Validation.class
 com\capg\flightmanagement\passengerms\exceptions\PassengerNotFoundException.class
 com\capg\flightmanagement\passengerms\PassengerManagementApplication.class
 com\capg\flightmanagement\passengerms\exceptions\InvalidArgumentException.class
 com\capg\flightmanagement\passengerms\service\PassengerServiceImpl.class
 com\capg\flightmanagement\passengerms\entities\Passenger.class
 com\capg\flightmanagement\passengerms\ServletInitializer.class
-com\capg\flightmanagement\passengerms\dto\PassengerDetailsDto.class
-com\capg\flightmanagement\passengerms\dto\CreatePassengerRequestDto.class

@@ -28,24 +28,7 @@ public class User {
 
 	}
 
-	/**
-	 * @param userType      : Initialize the user type
-	 * @param userId        : Initialize the user Id
-	 * @param userName      : Initialize the user Name
-	 * @param userPassword: Initialize user password
-	 * @param userPhone     :Initialize user phone
-	 * @param email:        :initialize user email
-	 */
-	public User(String userType, BigInteger userId, String userName, String userPassword, BigInteger userPhone,
-			String email) {
-
-		this.userType = userType;
-		this.userId = userId;
-		this.userName = userName;
-		this.userPassword = userPassword;
-		this.userPhone = userPhone;
-		this.email = email;
-	}
+	
 
 	/**
 	 * @return userType
