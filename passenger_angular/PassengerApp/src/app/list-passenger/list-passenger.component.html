@@ -1,17 +1,17 @@
 <h1>PASSENGER LIST</h1>
-
+<div  class="container">
 <table class="table" border="1">
-    <tr>
-        <th class="info">UNIQUE IDENTIFICATION NUMBER (UIN)</th>
-        <th class="warning">PASSENGER PNR</th>
+    <tr >
+        <th>UNIQUE IDENTIFICATION NUMBER (UIN)</th>
+        <th >PASSENGER PNR</th>
         <th>PASSENGER NAME</th>
         <th>PASSENGER AGE</th>
-        <th>LUGGAGE QUANTITY/th>
+        <th>LUGGAGE QUANTITY</th>
         <th>GENDER</th>
     </tr>
 
     <tr *ngFor="let passenger of passengers">
-        <td class="info">{{passenger.uin}}</td>
+        <td >{{passenger.uin}}</td>
         <td>{{passenger.pnr}}</td>
         <td>{{passenger.passengerName}}</td>
         <td>{{passenger.passengerAge}}</td>
@@ -19,12 +19,13 @@
         <td>{{passenger.gender}}</td>
     </tr>
 </table>
+</div>
 
 <br>
 <br>
-<form  #form ="ngForm"  (ngSubmit)="form.valid && findPassengerByUin(form)">
+<form  #form ="ngForm"  (ngSubmit) ="form.valid && findPassengerByUin(form)">
     <div>
-        <label>Find Passenger</label>
+        <h1>FIND PASSENGER</h1>
         <div>
             <label>UNIQUE IDENTIFICATION NUMBER (UIN)</label>
             <input type="text" class="form-control" name="uin" ngModel #uinCtrl=ngModel required  length="12">
@@ -37,15 +38,17 @@
         </div>
     </div>
 
-    <button type="submit">Find Passenger</button>
+    <button  type="submit"class="btn btn-success">Find Passenger</button>
+
 </form>
-<div *ngIf="fetched!==null">
-    UIN = {{fetched.uin}}
-    PNR = {{fetched.pnr}}
-    PASSENGER NAME={{fetched.passengerName}}
-    PASSENGER AGE={{fetched.passengerAge}}
-    LUGGAGE QUANTITY={{fetched.luggage}}
-    GENDER={{fetched.gender}}
+
+<div *ngIf ="found!==null">
+    UIN = {{found.uin}}
+    PNR = {{found.pnr}}
+    PASSENGER NAME={{found.passengerName}}
+    PASSENGER AGE={{found.passengerAge}}
+    LUGGAGE QUANTITY={{found.luggage}}
+    GENDER={{found.gender}}
 </div>
 
 <br>

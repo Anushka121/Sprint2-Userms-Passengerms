@@ -13,6 +13,7 @@ export class Passenger{
         this.uin=uin;
         this.passengerName=passengerName;
         this.passengerAge=passengerAge;
+        this.luggage=luggage;
         this.gender=gender;
     }
 }

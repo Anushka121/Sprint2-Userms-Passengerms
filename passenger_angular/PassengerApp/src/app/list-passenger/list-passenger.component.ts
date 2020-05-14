@@ -16,18 +16,22 @@ passengers:Passenger[]=[];
     let passenger2=new Passenger(1234567891,987654567890,"anu",22,10,"female");
 this.passengers.push(passenger1);
 this.passengers.push(passenger2);
+
    }
 
   ngOnInit(): void {
   }
 
-  fetched:Passenger=null;
-  findPassengerByUin(form:any){
+  found:Passenger=null;
+
+  findPassengerByUin(form:any)
+  {
     let details=form.value;
     let uin= details.uin;
     for(let passenger of this.passengers){
       if(passenger.uin===uin){
-        this.fetched=passenger;
+
+        this.found=passenger;
       }
     }
   }
