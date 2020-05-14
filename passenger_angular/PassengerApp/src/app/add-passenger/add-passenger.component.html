@@ -1,0 +1,86 @@
+<div class="container" style="margin-top: 70px; margin-left: 200px;">
+<form  #passengerForm ="ngForm" (ngSubmit)="passengerForm.valid && addPassenger(passengerForm)">
+    <div >
+        <h1>PASSENGER DETAILS</h1><br><br>
+        <label>UNIQUE IDENTIFICATION NUMBER (UIN)</label>
+        <input type="text" class="form-control" name="uin" ngModel #uinCtrl=ngModel required length="12">
+        <div *ngIf="uinCtrl.errors!=null && uinCtrl.errors.required">
+            uin is required
+        </div>
+        <div *ngIf ="uinCtrl.errors!=null && uinCtrl.errors.length">
+             length should be 12
+        </div>
+    </div>
+<br>
+<div>
+    <label>Passenger PNR</label>
+    <input type="number" class="form-control" name="pnr" ngModel #pnrCtrl=ngModel required>
+    <div *ngIf="pnrCtrl.errors!=null && pnrCtrl.errors.required">
+        Pnr is required
+    </div>
+</div>
+    
+    <br>
+    <div>
+        <label>Passenger Name</label>
+        <input type="text" class="form-control" name="pname" ngModel #pnameCtrl=ngModel required>
+        <div *ngIf="pnameCtrl.errors!=null && pnameCtrl.errors.required">
+            Passenger Name is required
+        </div>
+    </div>
+    <br>
+    <div>
+        <label>Passenger Age</label>
+        <input type="number" class="form-control"  name="passenger_age" ngModel #passenger_ageCtrl=ngModel required>
+        <div *ngIf="passenger_ageCtrl.errors!=null && passenger_ageCtrl.errors.required">
+            Age  is required
+        </div>
+    </div>
+    <br>
+
+    <div>
+        <label>Passenger Gender</label>
+        <input type="text" class="form-control" name="gender" ngModel #genderCtrl=ngModel required>
+        <div *ngIf="genderCtrl.errors!=null && genderCtrl.errors.required">
+            Gender  required
+        </div>
+    </div>
+    <br>
+    <div>
+        <label>Luggage Quantity</label>
+        <input type="number" class="form-control"  name="luggage" ngModel #luggageCtrl=ngModel required>
+        <div *ngIf="luggageCtrl.errors!=null && luggageCtrl.errors.required">
+            luggage details is required
+        </div>
+    </div>
+    <br>
+    <div>
+        <button type="submit" class="btn btn-success">Add Passenger</button>
+    </div>
+    </form>
+    </div>
+<br>
+    <div *ngIf="addedPassenger!==null">
+        <h3>Passenger added</h3> 
+        UIN = {{addedPassenger.uin}}
+        PNR = {{addedPassenger.pnr}}
+        PASSENGER NAME={{addedPassenger.passengerName}}
+        PASSENGER AGE={{addedPassenger.passengerAge}}
+        LUGGAGE QUANTITY={{addedPassenger.luggage}}
+        GENDER={{addedPassenger.gender}}
+       
+    </div>
+
+    <br>
+    <br>
+
+    <li>Existing Stock Details.
+        <a href="" routerLink="../list-passenger">passenger details</a>
+    </li>
+
+<br>
+<br>
+
+
+   
+
