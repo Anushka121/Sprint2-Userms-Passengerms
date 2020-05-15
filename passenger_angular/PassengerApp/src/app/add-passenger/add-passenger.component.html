@@ -5,21 +5,24 @@
     <div >
         <h1>PASSENGER DETAILS</h1><br><br>
         <label>UNIQUE IDENTIFICATION NUMBER (UIN)</label>
-        <input type="text" class="form-control" name="uin" ngModel #uinCtrl=ngModel required length="12">
+        <input type="text" class="form-control" name="uin" ngModel #uinCtrl=ngModel required minlength="12">
         <div *ngIf="uinCtrl.errors!=null && uinCtrl.errors.required">
             uin is required
         </div>
-        <div *ngIf ="uinCtrl.errors!=null && uinCtrl.errors.length">
+        <div *ngIf ="uinCtrl.errors!=null && uinCtrl.errors.minlength">
              length should be 12
         </div>
     </div>
 <br>
 <div>
     <label>Passenger PNR</label>
-    <input type="number" class="form-control" name="pnr" ngModel #pnrCtrl=ngModel required>
+    <input type="text" class="form-control" name="pnr" ngModel #pnrCtrl=ngModel required minlength="10">
     <div *ngIf="pnrCtrl.errors!=null && pnrCtrl.errors.required">
         Pnr is required
     </div>
+    <div *ngIf ="pnrCtrl.errors!=null && pnrCtrl.errors.minlength">
+        length should be 10
+   </div>
 </div>
     
     <br>
@@ -52,12 +55,13 @@
         <label>Luggage Quantity</label>
         <input type="number" class="form-control"  name="luggage" ngModel #luggageCtrl=ngModel required>
         <div *ngIf="luggageCtrl.errors!=null && luggageCtrl.errors.required">
-            luggage details is required
+            luggage details is required with maximum 15
         </div>
+        
     </div>
     <br>
     <div>
-        <button type="submit" class="btn btn-success">Add Passenger</button>
+        <button class="btn btn-success" type="submit" >Add Passenger</button>
     </div>
     </form>
     </div>

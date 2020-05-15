@@ -24,7 +24,7 @@ this.passengers.push(passenger2);
 
   found:Passenger=null;
 
-  findPassengerByUin(form:any)
+  findPassenger(form:any)
   {
     let details=form.value;
     let uin= details.uin;

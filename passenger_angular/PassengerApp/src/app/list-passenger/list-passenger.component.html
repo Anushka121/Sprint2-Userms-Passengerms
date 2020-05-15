@@ -23,16 +23,16 @@
 
 <br>
 <br>
-<form  #form ="ngForm"  (ngSubmit) ="form.valid && findPassengerByUin(form)">
+<form  #form ="ngForm"  (ngSubmit)="form.valid && findPassenger(form)">
     <div>
         <h1>FIND PASSENGER</h1>
         <div>
             <label>UNIQUE IDENTIFICATION NUMBER (UIN)</label>
-            <input type="text" class="form-control" name="uin" ngModel #uinCtrl=ngModel required  length="12">
+            <input type="text" class="form-control" name="uin" ngModel #uinCtrl=ngModel required minlength="12">
             <div *ngIf="uinCtrl.errors!=null && uinCtrl.errors.required">
                 uin is required
             </div>
-            <div *ngIf ="uinCtrl.errors!=null && uinCtrl.errors.length">
+            <div *ngIf ="uinCtrl.errors!=null && uinCtrl.errors.minlength">
                  length should be 12
             </div>
         </div>
