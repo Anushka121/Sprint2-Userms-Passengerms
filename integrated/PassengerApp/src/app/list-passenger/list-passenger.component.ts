@@ -54,14 +54,14 @@ passengers:Passenger[]=[];
   removePassenger(uin:number){
     let result:Observable<boolean>=this.service.deletePassenger(uin);
     result.subscribe(pass=>{
-        this.removeLocalEmployee(uin);
+        this.removeLocalPassenger(uin);
     },err=>{
      console.log("err in deleting ="+err);
     })
       }
 
  
-removeLocalEmployee(uin:number){
+removeLocalPassenger(uin:number){
   let foundIndex=-1;
   for(let i=0;i<this.passengers.length;i++){
     let pass=this.passengers[i];
