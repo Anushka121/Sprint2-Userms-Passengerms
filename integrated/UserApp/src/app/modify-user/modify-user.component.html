@@ -1,0 +1,88 @@
+<div>
+    <div class="container" style="margin-top: 70px; margin-left: 200px;">
+        
+    <form  class="in-line" #Form ="ngForm" (ngSubmit)="Form.valid && modifyUser(Form)">
+        <div >
+            <h1>USER UPDATION</h1><br><br>
+
+            <label>USER ID</label>
+            <input type="text" class="form-control" name="id" ngModel #idCtrl=ngModel required>
+            <div *ngIf="idCtrl.errors!=null && idCtrl.errors.required">
+            REQUIRED
+            </div>
+
+            <label>USERTYPE</label>
+            <input type="text" class="form-control" name="type" ngModel #typeCtrl=ngModel required>
+            <div *ngIf="typeCtrl.errors!=null && typeCtrl.errors.required">
+            REQUIRED
+            </div>
+            
+        </div>
+        
+        <br>
+        <div>
+            <label>USER NAME</label>
+            <input type="text" class="form-control" name="name" ngModel #nameCtrl=ngModel required>
+            <div *ngIf="nameCtrl.errors!=null && nameCtrl.errors.required">
+                 Name is required
+            </div>
+        </div>
+        <br>
+        <div>
+            <label>PASSWORD</label>
+            <input type="password" class="form-control"  name="password" ngModel #passwordCtrl=ngModel required>
+            <div *ngIf="passwordCtrl.errors!=null && passwordCtrl.errors.required">
+                  Required
+            </div>
+        </div>
+        <br>
+        <div>
+            <label>CONTACT NO</label>
+            <input type="number" class="form-control" name="contact" ngModel #contactCtrl=ngModel required>
+            <div *ngIf="contactCtrl.errors!=null && contactCtrl.errors.required">
+                Contact  required
+            </div>
+        </div>
+
+
+
+        <div>
+            <label>EMAIL</label>
+            <input type="email" class="form-control" name="email" ngModel #emailCtrl=ngModel required>
+            <div *ngIf="emailCtrl.errors!=null && emailCtrl.errors.required">
+                email  required
+            </div>
+        </div>
+        <br>
+        
+        
+        <div>
+            <button class="btn btn-success" type="submit" >UPDATE</button>
+        </div>
+        </form>
+        </div>
+    <br>
+        <div *ngIf="modifiedUser!==null">
+            <h3>Changes Successfull</h3> 
+            {{modifiedUser.userName}}
+            
+       </div>
+    
+        <br>
+        <br>
+        <li>Existing Details.
+            <a href="" routerLink="../list-user">user details</a>
+        </li>   
+        <br> 
+        <li>Sign up
+            <a href="" routerLink="../add-user">user details</a>
+        </li>    
+         <br>
+        <li>
+            <a href="" routerLink="../">HOMEPAGE</a>
+        </li>
+        
+    <br>
+    <br>
+    </div>
+    

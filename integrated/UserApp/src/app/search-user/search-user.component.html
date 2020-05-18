@@ -1,0 +1,39 @@
+<form  #form ="ngForm"  (ngSubmit)="form.valid && findUser(form)">
+    <div>
+        <h1>FIND User</h1>
+        <div>
+            <label>UserID</label>
+            <input type="number" class="form-control" name="userId" ngModel  #userIdCtrl=ngModel required >
+            <div *ngIf="userIdCtrl.errors!=null && userIdCtrl.errors.required">
+                 required
+            </div>
+            
+        </div>
+    </div>
+    <button class="btn btn-success" type="submit">Find User</button>
+</form>
+
+<div *ngIf="foundStatus==='found'">
+    userName=   {{foundUser.userName}}
+    Email=      {{foundUser.email}}
+    Contact=     {{foundUser.userPhone}}
+</div>
+
+<div *ngIf="foundStatus=='notfound'">
+    User not found !
+    </div>
+    
+    
+<div>
+    <li>For SIGN UP
+        <a href="" routerLink="../add-user">SIGNUP</a>
+    </li>
+    <br>
+    <li>
+        <a href="" routerLink="../">HOMEPAGE</a>
+    </li>
+    
+</div>
+<br>
+<br>
+

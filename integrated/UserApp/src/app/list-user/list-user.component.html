@@ -1,0 +1,38 @@
+<h1>USER LIST</h1>
+<div  class="container">
+<table class="table" border="1">
+    <tr>
+        <th>USER TYPE </th>
+        <th>USER ID </th>
+        <th>USER NAME</th>
+        <th>USER PHONE</th>
+        <th>USER EMAIL</th>
+       
+    </tr>
+
+    <tr *ngFor="let user of users">
+        <td >{{user.userType}}</td>
+        <td>{{user.userId}}</td>
+        <td>{{user.userName}}</td>
+        <td>{{user.userPhone}}</td>
+        <td>{{user.email}}</td> 
+        <td><button class="btn btn-success"(click)="removeUser(user.userId)">REMOVE USER</button></td> 
+        <td> <button class="btn btn-success"(click)="update()">UPDATE USER</button>
+        </td> 
+    </tr>
+</table>
+</div>
+<br>
+<br>
+<div>
+    <li>For SIGN UP
+        <a href="" routerLink="../add-user">SIGNUP</a>
+    </li>
+</div>
+<li>
+    <a href="" routerLink="../">HOMEPAGE</a>
+</li>
+
+
+<br>
+<br>
