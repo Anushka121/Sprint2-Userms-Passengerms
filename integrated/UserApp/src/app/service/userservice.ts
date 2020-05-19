@@ -42,6 +42,7 @@ export class UserService{
 
     modifyUser(user:User,userId:number):Observable<User>{
       let url=this.baseUserUrl+"/modify/"+userId;
+      console.log("userId"+user.userId+"username"+user.userName+"usertype"+user.userType+"userphone"+user.userPhone+"useremail:"+user.email);
       let result:Observable<User>= this.client.put<User>(url,user);
       return result;
       }

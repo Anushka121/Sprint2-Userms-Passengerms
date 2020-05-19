@@ -4,6 +4,7 @@ import { AddUserComponent} from '../app/add-user/add-user.component';
 import { ListUserComponent} from '../app/list-user/list-user.component';
 import { ModifyUserComponent} from '../app/modify-user/modify-user.component';
 import { SearchUserComponent } from './search-user/search-user.component';
+import { UserOperationComponent } from './user-operation/user-operation.component';
 
 const routes: Routes = [
 
@@ -24,6 +25,11 @@ const routes: Routes = [
   {
     path:'search-user',
     component:SearchUserComponent
+
+  },
+  {
+    path:'user-operation',
+    component:UserOperationComponent
 
   }
 ];

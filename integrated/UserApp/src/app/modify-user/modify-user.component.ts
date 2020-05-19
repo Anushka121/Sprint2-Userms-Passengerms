@@ -29,6 +29,7 @@ service:UserService
     let email=details.email;
 
     this.modifiedUser=new User();
+    this.modifiedUser.userId=id;
     this.modifiedUser.userType=type;
     this.modifiedUser.userName=name;
     this.modifiedUser.userPassword=password;

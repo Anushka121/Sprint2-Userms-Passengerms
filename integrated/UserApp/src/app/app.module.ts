@@ -9,13 +9,15 @@ import { ModifyUserComponent } from './modify-user/modify-user.component';
 import {UserService} from './service/userservice';
 import { HttpClientModule} from '@angular/common/http';
 import { SearchUserComponent } from './search-user/search-user.component';
+import { UserOperationComponent } from './user-operation/user-operation.component';
 @NgModule({
   declarations: [
     AppComponent,
     AddUserComponent,
     ListUserComponent,
     ModifyUserComponent,
-    SearchUserComponent
+    SearchUserComponent,
+    UserOperationComponent
   ],
   imports: [
     BrowserModule,

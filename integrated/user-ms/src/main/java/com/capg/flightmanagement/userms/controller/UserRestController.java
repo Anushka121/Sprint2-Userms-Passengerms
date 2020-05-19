@@ -114,8 +114,9 @@ public class UserRestController {
 	@PutMapping("/modify/{uid}")
 	ResponseEntity<UserDetailsDto> modify(@PathVariable("uid") BigInteger userId,
 			@Valid @RequestBody CreateUserRequestDto dto) {
+		
 		User user = userService.findUserById(userId);
-		user.setUserId(user.getUserId());
+		
 		user.setUserType(dto.getUserType());
 		user.setUserName(dto.getUserName());
 		user.setUserPassword(dto.getUserPassword());
