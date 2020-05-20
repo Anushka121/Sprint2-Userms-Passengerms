@@ -1,4 +1,4 @@
-package com.capg.flightmanagement.userms;
+package com.capg.flightmanagement.userms.copy;
 
 
 import org.springframework.boot.SpringApplication;

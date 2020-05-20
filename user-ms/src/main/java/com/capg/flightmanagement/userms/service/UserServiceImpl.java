@@ -34,7 +34,7 @@ public class UserServiceImpl implements IUserService {
 	 */
 	@Override
 	public User addUser(User user) {
-		UserValidation.ValidateUser(user);
+		UserValidation.validateUser(user);
 		BigInteger phone = user.getUserPhone();
 		String email = user.getEmail();
 		UserValidation.validatePhone(phone);

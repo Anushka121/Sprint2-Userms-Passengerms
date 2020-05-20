@@ -41,7 +41,7 @@ public class UserValidation {
      * @param user
      * checks the user attributes, if null throw exception
      */
-    public static void ValidateUser(User user)
+    public static void validateUser(User user)
     {
         if(user.getUserType()==null||user.getUserType().isEmpty())
         {
