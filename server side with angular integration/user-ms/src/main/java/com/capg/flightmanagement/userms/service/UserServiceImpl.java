@@ -53,7 +53,7 @@ public class UserServiceImpl implements IUserService {
 
 	/**
 	 * @param userId validating and finding user with userId
-	 * @return passenger
+	 * @return user
 	 */
 
 	@Override
@@ -64,12 +64,12 @@ public class UserServiceImpl implements IUserService {
 			User user = optional.get();
 			return user;
 		}
-		throw new UserNotFoundException("user not found for pnr =" + userId);
+		throw new UserNotFoundException("user not found for id =" + userId);
 
 	}
 
 	/**
-	 * @param userId deletes the passenger
+	 * @param userId deletes user
 	 * @return true/false
 	 * 
 	 */
@@ -86,7 +86,7 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	/**
-	 * @param user to modify userdetails
+	 * @param user to modify userDetails
 	 * @return user
 	 */
 

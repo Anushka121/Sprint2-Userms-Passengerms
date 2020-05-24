@@ -69,7 +69,7 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	/**
-	 * @param userId deletes user
+	 * @param userId deletes the user
 	 * @return true/false
 	 * 
 	 */
@@ -86,7 +86,7 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	/**
-	 * @param user to modify userDetails
+	 * @param user to modify userdetails
 	 * @return user
 	 */
 

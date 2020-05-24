@@ -1,8 +1,6 @@
 package com.capg.flightmanagement.userms.entities;
 
 import java.math.BigInteger;
-
-import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -131,9 +129,9 @@ public class User {
 	}
 
 	/**
-	 * override hashcode
+	 * override hash code
 	 * 
-	 * @return hashcode
+	 * @return hash code
 	 */
 	@Override
 	public int hashCode() {
